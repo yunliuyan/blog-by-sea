@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset = "utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>yunblog</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.6/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.6/css/glDatePicker.darkneon.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.6/css/glDatePicker.default.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.6/css/glDatePicker.flatwhite.css" />
+</head>
+<body>
+<app></app>
+
+    <script src="vendor/jquery-2.2.0/jquery.js"></script>
+    <script src="vendor/jquery-2.2.0/jquery.min.js"></script>
+    <script src="vendor/bootstrap-3.3.6/js/glDatePicker.js"></script>
+    <script src="vendor/bootstrap-3.3.6/js/glDatePicker.min.js"></script>
+    <script src="vendor/bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/loader/sea-debug.js"></script>
+    <script src="lib/loader/loader-config.js"></script>
+    <script>
+
+        seajs.use('hy',function(hy){
+            var config = {
+                route: {
+                    root: {
+                        module: 'archive/home',
+                        action: 'init'
+                    }
+                }
+            };
+            hy.init('app',config,function(require,boot){
+                //app需要写的js，数据处理等所需要的方法都可以在这里写
+                require.async(['_base/view','_base/app'], function (view,app) {
+                    view.init();
+                    app.init();
+                    boot();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

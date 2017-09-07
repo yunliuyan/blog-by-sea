@@ -1,0 +1,3 @@
+define(function(require, exports, module){
+  module.exports = '<style type="text/css">body,div ul,html,li,ul{padding:0;margin:0}body{font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB",STHeitiSC-Light,"Microsoft YaHei","微软雅黑",Arial,sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background:#e7e7e7}li,ul{list-style:none}a:link{color:#777}a:focus,a:hover{color:#666}</style>';
+});

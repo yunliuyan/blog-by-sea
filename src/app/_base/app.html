@@ -1,0 +1,213 @@
+<script export="mynav" type="text/template">
+    <style>
+        .navbar-nav > li {
+            margin-left: 40px !important;
+        }
+    </style>
+    <nav class="navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:" data-go-route="archive/home/init">{{=it.title}}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="navbar-nav">
+                    <li class="active" data-nav="home"><a href="javascript:;" data-go-route="archive/home/init">首页 <span class="sr-only">(current)</span></a></li>
+                    {{ it.topicList.forEach(function(item) { }}
+                    {{ if(item.children.length == 0){ }}
+                    <li data-nav="category{{=item.id}}"><a href="javascript:;" data-go-route-reload="archive/category/list&categoryId={{=item.id}}">{{=item.name}}</a></li>
+                    {{ } else { }}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{=item.name}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {{ item.children.forEach(function(item_children){ }}
+                                <li data-nav="category{{=item_children.id}}"><a href="javascript:;" data-go-route-reload="archive/category/list&categoryId={{=item_children.id}}">{{=item_children.name}}</a></li>
+                                {{ }); }}
+                            </ul>
+                            {{ } }}
+                            {{ }); }}
+                        </li>
+                </ul>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="搜索.....">
+                    </div>
+                    <button type="submit" class="btn btn-default">查询</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</script>
+<script export="header" type="text/template">
+    <style>
+        .bg-top {
+            background:url(../../vendor/images/top2.jpg) right top;
+            width:100%;
+            height:140px;
+        }
+        .sub-title{
+            float: left;
+            margin:40px auto auto 60px;
+        }
+        .avatar-img{
+            float: right;
+            width: 130px;
+            height: 130px;
+            margin: 5px 130px auto 20px;
+            padding: 10px;
+            border-radius:50%;
+        }
+        .name{
+            margin-top: 5px;
+            margin-left: 100px;
+        }
+    </style>
+    <div class="bg-top">
+        <div class="container">
+            <h5 class="sub-title">
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;云意<br>
+                我辈逍遥何惧孤，道心哪肯丈尘伏。<br>
+                庄周晓梦迷蝶意，李耳托言寓齿秃。<br>
+                欲解太白身上酒，兴寻陶令柳前庐。<br>
+                牡丹偏向繁华去，岂见深山有玉竹。<br>
+            </h5>
+            <img class="name" src="../../vendor/images/6763.png">
+            <img class="avatar-img img-circle" src="../../vendor/images/my.jpg">
+        </div>
+    </div>
+</script>
+<script export="content" type="text/template">
+    <style>
+        .left-line {
+            margin: 30px;
+        }
+        p.notice {
+            padding: 0 0 0 6px;
+            margin: 0;
+            border-bottom: 1px #666 solid;
+            font-size: 16px;
+        }
+         p.blogger, p.new-blog, p.reading-list {
+            padding: 20px 0 6px;
+            margin: 0;
+            border-bottom: 1px #666 solid;
+            font-size: 16px;
+        }
+        p.notice i p.new-blog i {
+            font-size: 20px;
+            vertical-align: text-bottom;
+        }
+        .notice-content {
+            margin-top: 10px;
+            text-indent: 2em;
+        }
+        .blogger-info {
+            margin-top: 10px;
+        }
+        .new-blog-details {
+            margin-top: 10px;
+        }
+        .new-blog-details ul, i {
+            line-height: 28px;
+        }
+        .select-color {
+            background: rgba(255, 255, 255, 0.75);
+            width: 365px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            height: 34px;
+        }
+        .blog-calendar {
+            margin-top: 20px;
+            margin-bottom: 400px;
+        }
+        .date-event {
+            z-index: 2000;
+            position: absolute;
+            height: 150px;
+            width: 200px;
+            top: 720px;
+            left: 210px;
+            background: url("../vendor/images/talk.png");
+            background-size: 200px 150px;
+            border-radius: 10%;
+            display: none;
+        }
+    </style>
+ <div class="row">
+     <div class="col-md-4">
+         <div class="left-line">
+             <p class="notice"><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;<span>前言</span></p>
+             <div class="notice-content">欢迎来到云流烟博客，这里是博主一切所闻所见所感，若无特别注明，均为原创，欢迎阅读，转载记得加上博主萌萌哒名字哦~o.0</div>
+             <p class="blogger"><i class="glyphicon glyphicon-user"></i>&nbsp;<span>博主名片</span></p>
+             <div class="blogger-info">
+                 <p><span>昵称：云流烟</span></p>
+                 <p><span>家乡：江西省-九江市-都昌县</span></p>
+                 <p><span>现居住地：江西省-南昌市</span></p>
+                 <p><span>园龄：18个月</span></p>
+                 <p><span>爱好：听歌看书，诗词曲赋，代码编程，还有，吃~</span></p>
+                 <p><span>偶像：许嵩，陈奕迅，村上春树</span></p>
+             </div>
+             <p class="new-blog"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<span>最新文章</span></p>
+             <div class="new-blog-details" id="new-blog">
+                 <ul>
+                     {{ it.detailsTimeDesc.forEach(function(item){ }}
+                     <li><a href="javascript:;" data-go-route-reload="archive/detail/detail&detailId={{=item.id}}">{{=item.title}}<span style="float: right">/{{=item.create_time}}</span></a></li>
+                     {{ }); }}
+                 </ul>
+             </div>
+             <p class="reading-list"><i class="glyphicon glyphicon-list"></i>&nbsp;<span>阅读排行榜</span></p>
+             <div class="new-blog-details">
+                 <ul>
+                    <!--{{ console.log(it.detailsHitsDesc); }}-->
+                     {{ it.detailsHitsDesc.forEach(function(v){ }}
+                     <li><a href="javascript:;" data-go-route-reload="archive/detail/detail&detailId={{=v.id}}">{{=v.title}}<span style="float: right"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{=v.hits}}</span></a></li>
+                     {{ }); }}
+                  </ul>
+             </div>
+             <p class="blogger"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 博主日历：</p>
+             <div class="blog-calendar">
+                 <select id="example5-cssName" class="select-color">
+                     <option value="default">日历背景颜色之默认色</option>
+                     <option value="flatwhite">日历背景颜色之平白色</option>
+                     <option value="darkneon">日历背景颜色之亮黑色</option>
+                 </select>
+                 <div class="output"><input type="text" name="calendar"  style="width: 365px" id="example5" gldp-id="gldp-1171076472" class="gldp-el" value="摸我有惊喜哦0.o~"/></div>
+            </div>
+             <div class="date-event" id="date-event"> </div>
+         </div>
+     </div>
+     <div class="col-md-8">
+         <div id="container-left">
+         </div>
+     </div>
+ </div>
+</script>
+<script export="footer" type="text/template">
+    <style>
+        .footer {
+            height: 60px;
+            background: url(../../vendor/images/foot.jpg);
+            text-align:center;
+        }
+        .hei{
+            padding-top: 20px;
+        }
+    </style>
+      <div class="footer">
+        <div class="hei">
+            <span class="shangwu">友情链接：</span>  <a href="http://www.jxnu.edu.cn/" target="_blank" title="江西师范大学">江西师范大学</a> || <a href="http://www.baidu.com/" title="百度" target="_blank">百度搜索</a>
+        </div>
+      </div>
+</script>
